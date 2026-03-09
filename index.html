@@ -1,0 +1,41 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+<title>AI Anomaly Dashboard</title>
+
+<script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+
+</head>
+
+<body>
+
+<h1>AI Anomaly Detection Dashboard</h1>
+
+<canvas id="chart" width="600" height="300"></canvas>
+
+<script>
+
+let values = {{ values }};
+let anomalies = {{ anomalies }};
+
+let colors = anomalies.map(a => a == -1 ? "red" : "blue");
+
+new Chart(document.getElementById("chart"), {
+type: "bar",
+
+data: {
+labels: values.map((v,i)=>i+1),
+datasets: [{
+label: "Sensor Values",
+data: values,
+backgroundColor: colors
+}]
+}
+
+});
+
+</script>
+
+</body>
+</html>
